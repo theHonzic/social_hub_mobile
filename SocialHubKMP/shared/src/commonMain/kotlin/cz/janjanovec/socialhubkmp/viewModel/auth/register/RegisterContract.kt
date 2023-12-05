@@ -15,13 +15,22 @@ interface RegisterContract {
         // Form
         var email: FormField,
         var phoneNumber: FormField,
-        var username: FormField
+        var username: FormField,
+        var checkAccountAvailabilityState: CheckAccountAvailabilityState = CheckAccountAvailabilityState.IDLE
     ) : UiState
     enum class RegisterPage {
         IDENTIFICATION,
         PERSONAL_DETAILS,
         UPLOAD_PHOTO,
         CONFIRMATION
+    }
+
+    enum class CheckAccountAvailabilityState {
+        IDLE,
+        LOADING,
+        AVAILABLE,
+        UNAVAILABLE,
+        ERROR
     }
 }
 

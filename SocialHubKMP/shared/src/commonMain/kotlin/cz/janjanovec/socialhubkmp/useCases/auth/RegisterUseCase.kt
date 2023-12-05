@@ -1,4 +1,4 @@
-package cz.janjanovec.socialhubkmp.useCases
+package cz.janjanovec.socialhubkmp.useCases.auth
 
 import cz.janjanovec.socialhubkmp.api.model.request.auth.RegistrationRequestBody
 import cz.janjanovec.socialhubkmp.api.IHttpClient

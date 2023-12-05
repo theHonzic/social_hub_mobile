@@ -1,5 +1,6 @@
 package cz.janjanovec.socialhubkmp.api
 
+import cz.janjanovec.socialhubkmp.api.model.request.auth.CheckAccountAvailabilityRequestBody
 import persistance.KVaultFactory
 import cz.janjanovec.socialhubkmp.api.model.request.auth.LoginRequestBody
 import cz.janjanovec.socialhubkmp.api.model.request.auth.RegistrationRequestBody
@@ -23,7 +24,6 @@ import org.koin.core.component.inject
 class HttpClientImpl: IHttpClient, KoinComponent {
     private val url = "http://0.0.0.0:8080"
     private val client = HttpClient {
-        expectSuccess = true
         install(ContentNegotiation) {
             json(Json {
                 prettyPrint = true
@@ -45,6 +45,7 @@ class HttpClientImpl: IHttpClient, KoinComponent {
                 contentType(ContentType.Application.Json)
                 setBody(body)
             }
+            Logger.log("Response: ${resp.status}")
             if (resp.call.response.status == HttpStatusCode.OK) {
                 val token = resp.body<LoginResponseBody>().token
                 store.saveString("USER_TOKEN", token)
@@ -53,7 +54,7 @@ class HttpClientImpl: IHttpClient, KoinComponent {
                 Result.failure(Exception("Error logging in"))
             }
         } catch (e: Exception) {
-            Logger.log("Error logging in: ${e.message}")
+            Logger.log("Error logging in: ${e.message}", Logger.MessageKind.ERROR)
             Result.failure(e)
         }
     }
@@ -61,14 +62,37 @@ class HttpClientImpl: IHttpClient, KoinComponent {
     override suspend fun register(body: RegistrationRequestBody): Result<Boolean> {
         return try {
             val resp = client.post("$url/auth/register") {
+                contentType(ContentType.Application.Json)
                 setBody(body)
             }
+            Logger.log("Response: ${resp.status}")
             if (resp.call.response.status == HttpStatusCode.OK) {
                 Result.success(true)
             } else {
                 Result.failure(Exception("Error logging in"))
             }
         } catch (e: Exception) {
+            Logger.log("Error registering in: ${e.message}", Logger.MessageKind.ERROR)
+            Result.failure(e)
+        }
+    }
+
+    override suspend fun checkAccountAvailability(body: CheckAccountAvailabilityRequestBody): Result<Boolean> {
+        return try {
+            val resp = client.post("$url/auth/check_available") {
+                contentType(ContentType.Application.Json)
+                setBody(body)
+            }
+            Logger.log("Response: ${resp.status}")
+            if (resp.call.response.status == HttpStatusCode.OK) {
+                Result.success(true)
+            } else if (resp.status == HttpStatusCode.Conflict) {
+                Result.success(false)
+            } else {
+                Result.failure(Exception("Error checking account availability"))
+            }
+        } catch (e: Exception) {
+            Logger.log("Error checking account availability: ${e.message}", Logger.MessageKind.ERROR)
             Result.failure(e)
         }
     }

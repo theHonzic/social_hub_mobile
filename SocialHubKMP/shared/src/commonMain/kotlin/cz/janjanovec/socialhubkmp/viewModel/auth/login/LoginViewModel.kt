@@ -1,7 +1,7 @@
 package cz.janjanovec.socialhubkmp.viewModel.auth.login
 
 import cz.janjanovec.socialhubkmp.viewModel.BaseViewModel
-import cz.janjanovec.socialhubkmp.useCases.LoginUseCase
+import cz.janjanovec.socialhubkmp.useCases.auth.LoginUseCase
 import org.koin.core.component.inject
 
 open class LoginViewModel: BaseViewModel<LoginContract.Event, LoginContract.State>() {

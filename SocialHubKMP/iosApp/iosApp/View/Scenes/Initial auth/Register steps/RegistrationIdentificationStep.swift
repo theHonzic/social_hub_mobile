@@ -33,7 +33,9 @@ struct RegistrationIdentificationStep: View {
                     placeholder: "Email",
                     background: .ultraThinMaterial,
                     foreground: .ultraThickMaterial,
-                    icon: .init(systemName: "envelope")
+                    icon: .init(systemName: "envelope"),
+                    valid: viewModel.state.email.isValid,
+                    errorPrompt: viewModel.state.email.validation.errorMessage
                 )
             }
             VStack(alignment: .leading, spacing: 10) {
@@ -45,7 +47,7 @@ struct RegistrationIdentificationStep: View {
                     background: .ultraThinMaterial,
                     foreground: .ultraThickMaterial,
                     icon: .init(systemName: "phone"),
-                    valid: viewModel.state.email.isValid
+                    valid: viewModel.state.phoneNumber.isValid
                 )
             }
             VStack(alignment: .leading, spacing: 10) {
@@ -57,7 +59,8 @@ struct RegistrationIdentificationStep: View {
                     background: .ultraThinMaterial,
                     foreground: .ultraThickMaterial,
                     icon: .init(systemName: "person"),
-                    valid: viewModel.state.username.isValid
+                    valid: viewModel.state.username.isValid,
+                    errorPrompt: viewModel.state.username.validation.errorMessage
                 )
             }
             Spacer()
