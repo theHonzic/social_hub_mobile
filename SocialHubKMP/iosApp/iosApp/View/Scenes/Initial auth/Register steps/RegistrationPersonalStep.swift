@@ -29,18 +29,18 @@ struct RegistrationPersonalStep: View {
                 VStack(alignment: .leading, spacing: 10) {
                     Text("First name*")
                         .foregroundStyle(Color.white)
-                    SingleLineTextField(text: .constant(""), placeholder: "Email", background: .ultraThinMaterial, foreground: .ultraThickMaterial, icon: .init(systemName: "person"))
+                    SingleLineTextField(text: .constant(""), placeholder: "Jan", background: .ultraThinMaterial, foreground: .ultraThickMaterial, icon: .init(systemName: "person"))
                 }
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Last name*")
                         .foregroundStyle(Color.white)
-                    SingleLineTextField(text: .constant(""), placeholder: "Email", background: .ultraThinMaterial, foreground: .ultraThickMaterial, icon: .init(systemName: "person"))
+                    SingleLineTextField(text: .constant(""), placeholder: "Janovec", background: .ultraThinMaterial, foreground: .ultraThickMaterial, icon: .init(systemName: "person"))
                 }
             }
             VStack(alignment: .leading, spacing: 10) {
                 Text("Gender*")
                     .foregroundStyle(Color.white)
-                SingleLineTextField(text: .constant(""), placeholder: "Phone number", background: .ultraThinMaterial, foreground: .ultraThickMaterial, icon: .init(systemName: "phone"))
+                SingleLineTextField(text: .constant(""), placeholder: "Male", background: .ultraThinMaterial, foreground: .ultraThickMaterial, icon: .init(systemName: "eye"))
             }
             VStack(alignment: .leading, spacing: 10) {
                 Text("Country*")

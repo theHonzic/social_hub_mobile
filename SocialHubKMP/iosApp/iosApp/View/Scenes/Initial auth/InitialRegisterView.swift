@@ -14,17 +14,19 @@ struct InitialRegisterView: View {
     @StateObject private var viewModel: RegisterVM = .init()
     var body: some View {
         ZStack {
-            switch viewModel.state.page {
-            case .identification:
-                RegistrationIdentificationStep()
-            case .personalDetails:
-                RegistrationPersonalStep()
-            case .uploadPhoto:
-                RegistrationUploadPhotoStep()
-            case .confirmation:
-                EmptyView()
-            default:
-                EmptyView()
+            ScrollView {
+                switch viewModel.state.page {
+                case .identification:
+                    RegistrationIdentificationStep()
+                case .personalDetails:
+                    RegistrationPersonalStep()
+                case .uploadPhoto:
+                    RegistrationUploadPhotoStep()
+                case .confirmation:
+                    EmptyView()
+                default:
+                    EmptyView()
+                }
             }
             VStack {
                 Spacer()

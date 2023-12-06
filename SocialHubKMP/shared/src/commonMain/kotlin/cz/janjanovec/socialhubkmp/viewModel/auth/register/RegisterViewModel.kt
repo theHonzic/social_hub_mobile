@@ -3,6 +3,8 @@ package cz.janjanovec.socialhubkmp.viewModel.auth.register
 import cz.janjanovec.socialhubkmp.api.model.request.auth.CheckAccountAvailabilityRequestBody
 import cz.janjanovec.socialhubkmp.useCases.auth.CheckAccountAvailableUseCase
 import cz.janjanovec.socialhubkmp.utils.AlertContainer
+import cz.janjanovec.socialhubkmp.utils.FormField
+import cz.janjanovec.socialhubkmp.utils.validation.FormFieldValidation
 import cz.janjanovec.socialhubkmp.viewModel.BaseViewModel
 import org.koin.core.component.inject
 

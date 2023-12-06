@@ -37,6 +37,10 @@ struct RegistrationIdentificationStep: View {
                     valid: viewModel.state.email.isValid,
                     errorPrompt: viewModel.state.email.validation.errorMessage
                 )
+                .keyboardType(.emailAddress)
+                .autocorrectionDisabled()
+                .textInputAutocapitalization(.never)
+                
             }
             VStack(alignment: .leading, spacing: 10) {
                 Text("Your phone number*")
@@ -49,6 +53,7 @@ struct RegistrationIdentificationStep: View {
                     icon: .init(systemName: "phone"),
                     valid: viewModel.state.phoneNumber.isValid
                 )
+                .keyboardType(.phonePad)
             }
             VStack(alignment: .leading, spacing: 10) {
                 Text("Username*")
@@ -62,6 +67,8 @@ struct RegistrationIdentificationStep: View {
                     valid: viewModel.state.username.isValid,
                     errorPrompt: viewModel.state.username.validation.errorMessage
                 )
+                .autocorrectionDisabled()
+                .textInputAutocapitalization(.never)
             }
             Spacer()
         }
