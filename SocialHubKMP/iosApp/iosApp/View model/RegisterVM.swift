@@ -13,10 +13,15 @@ final class RegisterVM: RegisterViewModel, ObservableObject {
     @Published var state: RegisterContractState = .init(
         page: .identification,
         alert: .init(title: "", message: "", isPresented: false, actions: []),
-        email: .init(value: "", validation: .email, triggerValidation: false),
-        phoneNumber: .init(value: "", validation: .phoneNumber, triggerValidation: false),
-        username: .init(value: "", validation: .username, triggerValidation: false),
-        checkAccountAvailabilityState: .idle
+        email: .init(value: "", validation: .email, triggerValidation: false, isMandatory: true),
+        phoneNumber: .init(value: "", validation: .phoneNumber, triggerValidation: false, isMandatory: true),
+        username: .init(value: "", validation: .username, triggerValidation: false, isMandatory: true),
+        checkAccountAvailabilityState: .idle,
+        firstName: .init(value: "", validation: nil, triggerValidation: false, isMandatory: true),
+        lastName: .init(value: "", validation: nil, triggerValidation: false, isMandatory: true),
+        gender: .init(value: "", validation: nil, triggerValidation: false, isMandatory: true),
+        country: nil,
+        registerState: .idle
     )
     
     override init() {

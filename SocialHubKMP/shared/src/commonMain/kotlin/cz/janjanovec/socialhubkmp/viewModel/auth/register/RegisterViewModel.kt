@@ -2,6 +2,7 @@ package cz.janjanovec.socialhubkmp.viewModel.auth.register
 
 import cz.janjanovec.socialhubkmp.api.model.request.auth.CheckAccountAvailabilityRequestBody
 import cz.janjanovec.socialhubkmp.useCases.auth.CheckAccountAvailableUseCase
+import cz.janjanovec.socialhubkmp.useCases.auth.RegisterUseCase
 import cz.janjanovec.socialhubkmp.utils.AlertContainer
 import cz.janjanovec.socialhubkmp.utils.FormField
 import cz.janjanovec.socialhubkmp.utils.validation.FormFieldValidation
@@ -10,6 +11,7 @@ import org.koin.core.component.inject
 
 open class RegisterViewModel: BaseViewModel<RegisterContract.Event, RegisterContract.State>() {
     private val checkAccountAvailableUseCase: CheckAccountAvailableUseCase by inject()
+    private val registerUseCase: RegisterUseCase by inject()
     override fun createInitialState(): RegisterContract.State =
         RegisterContract.State(
             RegisterContract.RegisterPage.IDENTIFICATION,
@@ -29,7 +31,18 @@ open class RegisterViewModel: BaseViewModel<RegisterContract.Event, RegisterCont
             FormField(
                 "",
                 FormFieldValidation.USERNAME
-            )
+            ),
+            RegisterContract.CheckAccountAvailabilityState.IDLE,
+            FormField(
+                ""
+            ),
+            FormField(
+                ""
+            ),
+            FormField(
+                ""
+            ),
+            cz.janjanovec.socialhubkmp.model.selectable.delegates.CountryHelper.getAll().first()
         )
 
     override suspend fun handleEvent(event: RegisterContract.Event) {
@@ -41,12 +54,12 @@ open class RegisterViewModel: BaseViewModel<RegisterContract.Event, RegisterCont
     val currentPageIsValid: Boolean
         get() = when (currentState.page) {
             RegisterContract.RegisterPage.IDENTIFICATION -> currentState.email.isValid && currentState.phoneNumber.isValid && currentState.username.isValid
-            RegisterContract.RegisterPage.PERSONAL_DETAILS -> true
+            RegisterContract.RegisterPage.PERSONAL_DETAILS -> currentState.firstName.isValid && currentState.lastName.isValid && currentState.gender.isValid && currentState.country != null
             RegisterContract.RegisterPage.UPLOAD_PHOTO -> true
             else -> true
         }
 
-    val isProceedButtonLoading: Boolean
+    val buttonText: Boolean
         get() = when (currentState.page) {
             RegisterContract.RegisterPage.IDENTIFICATION -> {
                 currentState.checkAccountAvailabilityState == RegisterContract.CheckAccountAvailabilityState.LOADING
@@ -108,12 +121,60 @@ open class RegisterViewModel: BaseViewModel<RegisterContract.Event, RegisterCont
                 }
             }
             RegisterContract.RegisterPage.PERSONAL_DETAILS -> {
-                setState { copy(page = RegisterContract.RegisterPage.UPLOAD_PHOTO) }
+                setState {
+                    copy(
+                        firstName = firstName.copy(triggerValidation = true),
+                        lastName = lastName.copy(triggerValidation = true),
+                        gender = gender.copy(triggerValidation = true)
+                    )
+                }
+                if (currentPageIsValid) {
+                    setState { copy(page = RegisterContract.RegisterPage.UPLOAD_PHOTO) }
+                }
             }
             RegisterContract.RegisterPage.UPLOAD_PHOTO -> {
                 setState { copy(page = RegisterContract.RegisterPage.CONFIRMATION) }
             }
-            else -> {}
+            RegisterContract.RegisterPage.CONFIRMATION -> {
+                setState { copy(registerState = RegisterContract.RegisterState.LOADING) }
+                registerUseCase.invoke(
+                    currentState.username.value,
+                    currentState.firstName.value,
+                    currentState.lastName.value,
+                    currentState.gender.value,
+                    currentState.email.value,
+                    currentState.phoneNumber.value,
+                    currentState.country?.isoCode ?: "CZ",
+                    "password"
+                )
+                    .onSuccess {
+                        if (it) {
+                            setState {
+                                copy(
+                                    registerState = RegisterContract.RegisterState.SUCCESS
+                                )
+                            }
+                        } else {
+                            setState {
+                                copy(
+                                    registerState = RegisterContract.RegisterState.ERROR,
+                                    alert = AlertContainer(
+                                        "Error",
+                                        "Something went wrong",
+                                        true
+                                    )
+                                )
+                            }
+                        }
+                    }
+                    .onFailure {
+                        setState {
+                            copy(
+                                registerState = RegisterContract.RegisterState.ERROR
+                            )
+                        }
+                    }
+            }
         }
     }
 }

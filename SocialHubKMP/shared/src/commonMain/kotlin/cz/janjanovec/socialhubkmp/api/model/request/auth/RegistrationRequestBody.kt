@@ -11,9 +11,5 @@ data class RegistrationRequestBody(
     val email: String,
     val phoneNumber: String,
     val country: String,
-    val street: String? = null,
-    val houseNumber: String? = null,
-    val postalCode: String? = null,
-    val city: String? = null,
     val password: String
 ): RequestBody

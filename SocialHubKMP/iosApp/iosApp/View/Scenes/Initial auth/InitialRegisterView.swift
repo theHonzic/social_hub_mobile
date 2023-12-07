@@ -14,23 +14,21 @@ struct InitialRegisterView: View {
     @StateObject private var viewModel: RegisterVM = .init()
     var body: some View {
         ZStack {
-            ScrollView {
-                switch viewModel.state.page {
-                case .identification:
-                    RegistrationIdentificationStep()
-                case .personalDetails:
-                    RegistrationPersonalStep()
-                case .uploadPhoto:
-                    RegistrationUploadPhotoStep()
-                case .confirmation:
-                    EmptyView()
-                default:
-                    EmptyView()
-                }
+            switch viewModel.state.page {
+            case .identification:
+                RegistrationIdentificationStep(authPage: $authPage)
+            case .personalDetails:
+                RegistrationPersonalStep()
+            case .uploadPhoto:
+                RegistrationUploadPhotoStep()
+            case .confirmation:
+                RegistrationConfirmStep()
+            default:
+                EmptyView()
             }
             VStack {
                 Spacer()
-                RoundedButton(text: "Continue", foreground: Color.white, background: LinearGradient(colors: [.red, .orange], startPoint: .bottomLeading, endPoint: .topTrailing)) {
+                RoundedButton(text: viewModel.state.page == .confirmation ? "Confirm" : "Continue", foreground: Color.white, background: LinearGradient(colors: [.red, .orange], startPoint: .bottomLeading, endPoint: .topTrailing)) {
                     withAnimation {
                         viewModel.nextStep()
                     }

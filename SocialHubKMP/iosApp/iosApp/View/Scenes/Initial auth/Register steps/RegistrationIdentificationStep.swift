@@ -10,6 +10,8 @@ import SwiftUI
 
 struct RegistrationIdentificationStep: View {
     @EnvironmentObject private var viewModel: RegisterVM
+    @Binding var authPage: AuthPage
+
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack {
@@ -35,7 +37,7 @@ struct RegistrationIdentificationStep: View {
                     foreground: .ultraThickMaterial,
                     icon: .init(systemName: "envelope"),
                     valid: viewModel.state.email.isValid,
-                    errorPrompt: viewModel.state.email.validation.errorMessage
+                    errorPrompt: viewModel.state.email.validation?.errorMessage
                 )
                 .keyboardType(.emailAddress)
                 .autocorrectionDisabled()
@@ -51,7 +53,8 @@ struct RegistrationIdentificationStep: View {
                     background: .ultraThinMaterial,
                     foreground: .ultraThickMaterial,
                     icon: .init(systemName: "phone"),
-                    valid: viewModel.state.phoneNumber.isValid
+                    valid: viewModel.state.phoneNumber.isValid,
+                    errorPrompt: viewModel.state.phoneNumber.validation?.errorMessage
                 )
                 .keyboardType(.phonePad)
             }
@@ -65,11 +68,22 @@ struct RegistrationIdentificationStep: View {
                     foreground: .ultraThickMaterial,
                     icon: .init(systemName: "person"),
                     valid: viewModel.state.username.isValid,
-                    errorPrompt: viewModel.state.username.validation.errorMessage
+                    errorPrompt: viewModel.state.username.validation?.errorMessage
                 )
                 .autocorrectionDisabled()
                 .textInputAutocapitalization(.never)
             }
+            HStack(alignment: .center, spacing: 4) {
+                Text("Already have an account?")
+                    .foregroundStyle(Color.white)
+                Button("Login.") {
+                    authPage = .login
+                }
+                .tint(.orange)
+                Spacer()
+            }
+            .font(.callout)
+            .frame(maxWidth: .infinity)
             Spacer()
         }
     }

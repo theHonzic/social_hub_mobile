@@ -14,10 +14,6 @@ class RegisterUseCase(
         email: String,
         phoneNumber: String,
         country: String,
-        street: String?,
-        houseNumber: String?,
-        postalCode: String?,
-        city: String?,
         password: String
     ): Result<Boolean> {
         client.register(
@@ -29,10 +25,6 @@ class RegisterUseCase(
             email,
             phoneNumber,
             country,
-            street,
-            houseNumber,
-            postalCode,
-            city,
             password
         )
         )

@@ -10,7 +10,7 @@ import shared
 import SwiftUI
 
 struct RegistrationPersonalStep: View {
-    @State var selectedCountry: Country = CountryHelper().getAll().first!
+    @EnvironmentObject private var viewModel: RegisterVM
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack {
@@ -29,23 +29,47 @@ struct RegistrationPersonalStep: View {
                 VStack(alignment: .leading, spacing: 10) {
                     Text("First name*")
                         .foregroundStyle(Color.white)
-                    SingleLineTextField(text: .constant(""), placeholder: "Jan", background: .ultraThinMaterial, foreground: .ultraThickMaterial, icon: .init(systemName: "person"))
+                    TextInputWrapper(
+                        input: $viewModel.state.firstName.value,
+                        placeholder: "Jan",
+                        background: .ultraThinMaterial,
+                        foreground: .ultraThickMaterial,
+                        icon: .init(systemName: "person"),
+                        valid: viewModel.state.firstName.isValid,
+                        errorPrompt: viewModel.state.firstName.validation?.errorMessage
+                    )
                 }
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Last name*")
                         .foregroundStyle(Color.white)
-                    SingleLineTextField(text: .constant(""), placeholder: "Janovec", background: .ultraThinMaterial, foreground: .ultraThickMaterial, icon: .init(systemName: "person"))
+                    TextInputWrapper(
+                        input: $viewModel.state.lastName.value,
+                        placeholder: "Janovec",
+                        background: .ultraThinMaterial,
+                        foreground: .ultraThickMaterial,
+                        icon: .init(systemName: "person"),
+                        valid: viewModel.state.lastName.isValid,
+                        errorPrompt: viewModel.state.lastName.validation?.errorMessage
+                    )
                 }
             }
             VStack(alignment: .leading, spacing: 10) {
                 Text("Gender*")
                     .foregroundStyle(Color.white)
-                SingleLineTextField(text: .constant(""), placeholder: "Male", background: .ultraThinMaterial, foreground: .ultraThickMaterial, icon: .init(systemName: "eye"))
+                TextInputWrapper(
+                    input: $viewModel.state.gender.value,
+                    placeholder: "Male",
+                    background: .ultraThinMaterial,
+                    foreground: .ultraThickMaterial,
+                    icon: .init(systemName: "eye"),
+                    valid: viewModel.state.gender.isValid,
+                    errorPrompt: viewModel.state.gender.validation?.errorMessage
+                )
             }
             VStack(alignment: .leading, spacing: 10) {
                 Text("Country*")
                     .foregroundStyle(Color.white)
-                SelectInputFIeld(selectedItem: $selectedCountry, list: CountryHelper().getAll())
+                SelectInputFIeld(selectedItem: .constant(CountryHelper().getAll().first!), list: CountryHelper().getAll())
             }
             Spacer()
         }

@@ -12,7 +12,7 @@ struct InitialAuthView: View {
     @State var username = "the_honzic"
     @State var password = "password"
     @State var currentAuthPage: AuthPage = .login
-
+    
     var body: some View {
         ZStack {
             // MARK: - Background
@@ -31,8 +31,7 @@ struct InitialAuthView: View {
                     EmptyView()
                 }
             }
-            .animation(.smooth, value: currentAuthPage)
-                .padding(16)
+            .padding(16)
         }
     }
 }
