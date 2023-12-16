@@ -12,6 +12,7 @@ import SwiftUI
 struct InitialRegisterView: View {
     @Binding var authPage: AuthPage
     @StateObject private var viewModel: RegisterVM = .init()
+    @EnvironmentObject private var settings: GlobalSettingsVM
     var body: some View {
         ZStack {
             switch viewModel.state.page {
@@ -44,6 +45,11 @@ struct InitialRegisterView: View {
         }, message: {
             Text(viewModel.state.alert.message)
         })
+        .onChange(of: viewModel.state.registerState) { oldValue, newValue in
+            if newValue == .success {
+                settings.refreshAccount()
+            }
+        }
     }
 }
 

@@ -36,4 +36,8 @@ extension RegisterVM {
     func nextStep() {
         self.setEvent(event: RegisterContractEventProceedToTheNextStep())
     }
+    
+    func edit() {
+        self.setEvent(event: RegisterContractEventEdit())
+    }
 }

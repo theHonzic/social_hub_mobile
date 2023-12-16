@@ -18,7 +18,6 @@ struct AppLoadingView: View {
                 Text("Social hub")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                Text("\(globalSettings.state.loadingProgress)")
                 Spacer()
             }
         }

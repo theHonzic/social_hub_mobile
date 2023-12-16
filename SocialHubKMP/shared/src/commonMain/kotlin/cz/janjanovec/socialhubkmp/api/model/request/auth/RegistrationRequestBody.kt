@@ -7,7 +7,7 @@ data class RegistrationRequestBody(
     val username: String,
     val firstName: String,
     val lastName: String,
-    val gender: String,
+    val gender: Int,
     val email: String,
     val phoneNumber: String,
     val country: String,

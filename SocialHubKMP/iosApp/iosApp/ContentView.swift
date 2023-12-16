@@ -5,18 +5,18 @@ struct ContentView: View {
     @StateObject private var globalSettings: GlobalSettingsVM = .init()
     var body: some View {
         Group {
-           /*
-            if globalSettings.state.loadingProgress <= 0.99 {
-                 AppLoadingView()
-             } else {
-                 if globalSettings.userLoggedIn {
-                     MainScreen()
-                 } else {
-                     InitialAuthView()
-                 }
-             }
-            */
-            InitialAuthView()
+            switch globalSettings.state.appState {
+            case is GlobalSettingsContractApplicationStateLoading:
+                ProgressView()
+            case is GlobalSettingsContractApplicationStateOnboarding:
+                OnboardingView()
+            case is GlobalSettingsContractApplicationStateLoggedIn:
+                Text("APP")
+            case is GlobalSettingsContractApplicationStateLoggedOut:
+                InitialAuthView()
+            default:
+                EmptyView()
+            }
         }
         .environmentObject(globalSettings)
     }

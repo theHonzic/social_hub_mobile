@@ -12,6 +12,7 @@ import SwiftUI
 struct InitialLoginView: View {
     @Binding var authPage: AuthPage
     @StateObject var viewModel: LoginVM = .init()
+    @EnvironmentObject private var settings: GlobalSettingsVM
     @State var login: String = ""
     @State var password: String = ""
     var loginButtonDisabled: Bool {
@@ -75,6 +76,11 @@ struct InitialLoginView: View {
                 }
                 .font(.callout)
                 .frame(maxWidth: .infinity)
+            }
+        }
+        .onChange(of: viewModel.state.state) { oldValue, newValue in
+            if newValue == .success {
+                settings.refreshAccount()
             }
         }
     }

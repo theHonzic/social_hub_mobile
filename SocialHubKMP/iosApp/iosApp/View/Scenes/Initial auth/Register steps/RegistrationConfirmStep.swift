@@ -68,7 +68,8 @@ struct RegistrationConfirmStep: View {
                     }
                     Divider()
                         .padding(.horizontal, 4)
-                    Button{
+                    Button {
+                        viewModel.edit()
                     } label: {
                         Label("Edit", systemImage: "pencil")
                     }

@@ -1,6 +1,7 @@
 package cz.janjanovec.socialhubkmp.viewModel.auth.register
 
 import cz.janjanovec.socialhubkmp.api.model.request.auth.CheckAccountAvailabilityRequestBody
+import cz.janjanovec.socialhubkmp.model.selectable.delegates.Gender
 import cz.janjanovec.socialhubkmp.useCases.auth.CheckAccountAvailableUseCase
 import cz.janjanovec.socialhubkmp.useCases.auth.RegisterUseCase
 import cz.janjanovec.socialhubkmp.utils.AlertContainer
@@ -48,6 +49,7 @@ open class RegisterViewModel: BaseViewModel<RegisterContract.Event, RegisterCont
     override suspend fun handleEvent(event: RegisterContract.Event) {
         when(event) {
             is RegisterContract.Event.ProceedToTheNextStep -> proceed()
+            is RegisterContract.Event.Edit -> setState { copy(page = RegisterContract.RegisterPage.IDENTIFICATION) }
         }
     }
 
@@ -141,7 +143,7 @@ open class RegisterViewModel: BaseViewModel<RegisterContract.Event, RegisterCont
                     currentState.username.value,
                     currentState.firstName.value,
                     currentState.lastName.value,
-                    currentState.gender.value,
+                    Gender.MALE,
                     currentState.email.value,
                     currentState.phoneNumber.value,
                     currentState.country?.isoCode ?: "CZ",

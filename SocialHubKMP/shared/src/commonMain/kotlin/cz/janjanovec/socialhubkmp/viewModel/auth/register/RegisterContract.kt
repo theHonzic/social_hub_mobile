@@ -9,6 +9,7 @@ import cz.janjanovec.socialhubkmp.viewModel.UiState
 interface RegisterContract {
     sealed interface Event : UiEvent {
         object ProceedToTheNextStep : Event
+        object Edit : Event
     }
 
     data class State(

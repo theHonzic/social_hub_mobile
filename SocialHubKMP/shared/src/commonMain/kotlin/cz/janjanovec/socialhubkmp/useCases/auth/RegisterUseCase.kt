@@ -2,6 +2,7 @@ package cz.janjanovec.socialhubkmp.useCases.auth
 
 import cz.janjanovec.socialhubkmp.api.model.request.auth.RegistrationRequestBody
 import cz.janjanovec.socialhubkmp.api.IHttpClient
+import cz.janjanovec.socialhubkmp.model.selectable.delegates.Gender
 
 class RegisterUseCase(
     private val client: IHttpClient
@@ -10,7 +11,7 @@ class RegisterUseCase(
         username: String,
         firstName: String,
         lastName: String,
-        gender: String,
+        gender: Gender,
         email: String,
         phoneNumber: String,
         country: String,
@@ -21,7 +22,7 @@ class RegisterUseCase(
             username,
             firstName,
             lastName,
-            gender,
+            gender.genderId,
             email,
             phoneNumber,
             country,

@@ -2,6 +2,7 @@ package di
 
 import cz.janjanovec.socialhubkmp.api.HttpClientImpl
 import cz.janjanovec.socialhubkmp.api.IHttpClient
+import cz.janjanovec.socialhubkmp.useCases.account.GetMyAccountUseCase
 import cz.janjanovec.socialhubkmp.useCases.auth.CheckAccountAvailableUseCase
 import cz.janjanovec.socialhubkmp.useCases.auth.LoginUseCase
 import cz.janjanovec.socialhubkmp.useCases.auth.RegisterUseCase
@@ -18,7 +19,8 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
             platformModule(),
             dispatcherModule,
             client,
-            authUseCaseModule
+            authUseCaseModule,
+            accountUseCaseModule
         )
     }
 
@@ -33,6 +35,10 @@ val authUseCaseModule = module {
     factory { LoginUseCase(get()) }
     factory { RegisterUseCase(get()) }
     factory { CheckAccountAvailableUseCase(get()) }
+}
+// Account
+val accountUseCaseModule = module {
+    factory { GetMyAccountUseCase(get(), get()) }
 }
 
 val client: Module = module {

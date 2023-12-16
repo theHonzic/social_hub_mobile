@@ -22,6 +22,9 @@
 		C36473CB2B213387002BC707 /* RegistrationConfirmStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36473CA2B213387002BC707 /* RegistrationConfirmStep.swift */; };
 		C372F7A82B1E7F8000CAD0D5 /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C372F7A72B1E7F8000CAD0D5 /* RegisterVM.swift */; };
 		C372F7AA2B1E83A300CAD0D5 /* TextInputWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C372F7A92B1E83A300CAD0D5 /* TextInputWrapper.swift */; };
+		C37E2D842B2E3AB300C7A7CA /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37E2D832B2E3AB300C7A7CA /* OnboardingView.swift */; };
+		C37E2D862B2E422D00C7A7CA /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37E2D852B2E422D00C7A7CA /* OnboardingPage.swift */; };
+		C37E2D882B2E471600C7A7CA /* OnboardingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37E2D872B2E471600C7A7CA /* OnboardingVM.swift */; };
 		C3B5E68A2B00EF450083BE69 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5E6892B00EF450083BE69 /* LoginVM.swift */; };
 		C3B5E68E2B00F0EE0083BE69 /* InitialAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5E68D2B00F0EE0083BE69 /* InitialAuthView.swift */; };
 		C3D709A02B16A44800676B20 /* PhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D7099F2B16A44800676B20 /* PhotoPickerView.swift */; };
@@ -61,6 +64,9 @@
 		C36473CA2B213387002BC707 /* RegistrationConfirmStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmStep.swift; sourceTree = "<group>"; };
 		C372F7A72B1E7F8000CAD0D5 /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
 		C372F7A92B1E83A300CAD0D5 /* TextInputWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputWrapper.swift; sourceTree = "<group>"; };
+		C37E2D832B2E3AB300C7A7CA /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		C37E2D852B2E422D00C7A7CA /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
+		C37E2D872B2E471600C7A7CA /* OnboardingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVM.swift; sourceTree = "<group>"; };
 		C3B5E6892B00EF450083BE69 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		C3B5E68D2B00F0EE0083BE69 /* InitialAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialAuthView.swift; sourceTree = "<group>"; };
 		C3D7099F2B16A44800676B20 /* PhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerView.swift; sourceTree = "<group>"; };
@@ -201,12 +207,22 @@
 			path = "Register steps";
 			sourceTree = "<group>";
 		};
+		C37E2D822B2E3A2B00C7A7CA /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C37E2D832B2E3AB300C7A7CA /* OnboardingView.swift */,
+				C37E2D852B2E422D00C7A7CA /* OnboardingPage.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		C3B5E6882B00EF380083BE69 /* View model */ = {
 			isa = PBXGroup;
 			children = (
 				C3B5E6892B00EF450083BE69 /* LoginVM.swift */,
 				C35D2E262B01647400AB02C2 /* GlobalSettingsVM.swift */,
 				C372F7A72B1E7F8000CAD0D5 /* RegisterVM.swift */,
+				C37E2D872B2E471600C7A7CA /* OnboardingVM.swift */,
 			);
 			path = "View model";
 			sourceTree = "<group>";
@@ -214,6 +230,7 @@
 		C3B5E68C2B00F0E50083BE69 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C37E2D822B2E3A2B00C7A7CA /* Onboarding */,
 				C32749C82B0EBB5200C89E6C /* Initial auth */,
 				C3DABE9A2B0125160060E48B /* AppLoadingView.swift */,
 				C3DABE9C2B0132010060E48B /* MainScreen.swift */,
@@ -344,6 +361,7 @@
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				C3B5E68E2B00F0EE0083BE69 /* InitialAuthView.swift in Sources */,
+				C37E2D862B2E422D00C7A7CA /* OnboardingPage.swift in Sources */,
 				C372F7AA2B1E83A300CAD0D5 /* TextInputWrapper.swift in Sources */,
 				C362A34B2B100E3F006495D5 /* RegistrationIdentificationStep.swift in Sources */,
 				C3D709A22B16A93400676B20 /* RegistrationUploadPhotoStep.swift in Sources */,
@@ -352,12 +370,14 @@
 				C36473CB2B213387002BC707 /* RegistrationConfirmStep.swift in Sources */,
 				C3B5E68A2B00EF450083BE69 /* LoginVM.swift in Sources */,
 				C35D2E272B01647400AB02C2 /* GlobalSettingsVM.swift in Sources */,
+				C37E2D842B2E3AB300C7A7CA /* OnboardingView.swift in Sources */,
 				C309517E2B0F8972003307EF /* SingleLineTextField.swift in Sources */,
 				C30E63FB2B153B8E00456CCF /* SelectInputFIeld.swift in Sources */,
 				C372F7A82B1E7F8000CAD0D5 /* RegisterVM.swift in Sources */,
 				C3DABE9B2B0125160060E48B /* AppLoadingView.swift in Sources */,
 				C3D709A02B16A44800676B20 /* PhotoPickerView.swift in Sources */,
 				C32749CA2B0EBB6F00C89E6C /* InitialLoginView.swift in Sources */,
+				C37E2D882B2E471600C7A7CA /* OnboardingVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
