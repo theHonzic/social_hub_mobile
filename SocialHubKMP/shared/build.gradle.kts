@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.plugin.KotlinTargetHierarchy.SourceSetTree.Companion.main
+
 val sqlDelightVersion = "2.0.0-alpha05"
 val coroutinesVersion = "1.6.4"
 val ktorVersion = "2.3.0"
@@ -37,13 +39,14 @@ kotlin {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
                 implementation("io.insert-koin:koin-core:${koinVersion}")
                 implementation("com.liftric:kvault:1.12.0")
+                implementation("dev.icerock.moko:permissions:0.17.0")
+                implementation("dev.icerock.moko:geo:0.6.0")
             }
             val commonTest by getting {
                 dependencies {

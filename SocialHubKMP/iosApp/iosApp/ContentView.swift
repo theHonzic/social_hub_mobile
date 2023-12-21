@@ -11,7 +11,7 @@ struct ContentView: View {
             case is GlobalSettingsContractApplicationStateOnboarding:
                 OnboardingView()
             case is GlobalSettingsContractApplicationStateLoggedIn:
-                Text("APP")
+                MainScreen()
             case is GlobalSettingsContractApplicationStateLoggedOut:
                 InitialAuthView()
             default:

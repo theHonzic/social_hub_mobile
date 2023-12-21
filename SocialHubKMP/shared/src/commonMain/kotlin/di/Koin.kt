@@ -6,6 +6,8 @@ import cz.janjanovec.socialhubkmp.useCases.account.GetMyAccountUseCase
 import cz.janjanovec.socialhubkmp.useCases.auth.CheckAccountAvailableUseCase
 import cz.janjanovec.socialhubkmp.useCases.auth.LoginUseCase
 import cz.janjanovec.socialhubkmp.useCases.auth.RegisterUseCase
+import cz.janjanovec.socialhubkmp.useCases.location.GetUserLocationUseCase
+import dev.icerock.moko.geo.LocationTracker
 import kotlinx.coroutines.Dispatchers
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
@@ -20,7 +22,8 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) =
             dispatcherModule,
             client,
             authUseCaseModule,
-            accountUseCaseModule
+            accountUseCaseModule,
+            utils
         )
     }
 
@@ -43,4 +46,8 @@ val accountUseCaseModule = module {
 
 val client: Module = module {
     single<IHttpClient> { HttpClientImpl() }
+}
+
+val utils: Module = module {
+    factory { GetUserLocationUseCase(get(), get()) }
 }

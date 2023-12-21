@@ -9,8 +9,9 @@
 import SwiftUI
 
 struct MainScreen: View {
+    @State var backgroundOpacity: Double = 0.0
     var body: some View {
-        Text("Hello, World!")
+        Text("App")
     }
 }
 
