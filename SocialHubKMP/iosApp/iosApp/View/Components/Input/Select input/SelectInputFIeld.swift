@@ -52,10 +52,3 @@ struct SelectInputFIeld<SelectableDelegate: Selectable>: View {
         }
     }
 }
-
-#Preview {
-    VStack {
-        SelectInputFIeld(selectedItem: .constant(CountryHelper().getAll().first!), list: CountryHelper().getAll())
-    }
-    .padding()
-}

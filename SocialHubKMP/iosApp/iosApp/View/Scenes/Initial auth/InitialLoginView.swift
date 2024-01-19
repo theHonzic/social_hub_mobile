@@ -46,7 +46,7 @@ struct InitialLoginView: View {
                 .font(.callout)
                 .padding(.horizontal, 14)
                 Spacer()
-                if viewModel.state.state == .loading {
+                if viewModel.state.state is LoginContractILoginStateLOADING {
                     HStack {
                         Spacer()
                         ProgressView()
@@ -78,11 +78,13 @@ struct InitialLoginView: View {
                 .frame(maxWidth: .infinity)
             }
         }
-        .onChange(of: viewModel.state.state) { oldValue, newValue in
-            if newValue == .success {
-                settings.refreshAccount()
-            }
-        }
+        /*
+         .onChange(of: viewModel.state.state) { oldValue, newValue in
+             if newValue is LoginContractILoginStateSUCCESS {
+                 settings.refreshAccount()
+             }
+         }
+         */
     }
 }
 

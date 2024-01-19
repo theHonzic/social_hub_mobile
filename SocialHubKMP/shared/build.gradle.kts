@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     kotlin("plugin.serialization") version "1.9.10"
+    id("co.touchlab.skie") version "0.6.1"
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -57,8 +58,7 @@ kotlin {
 
         val iosMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-client-darwin:$ktorVersion") // Add this line
-                // ... other dependencies
+                implementation("io.ktor:ktor-client-darwin:$ktorVersion")
             }
         }
     }

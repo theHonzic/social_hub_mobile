@@ -24,8 +24,6 @@ struct InitialRegisterView: View {
                 RegistrationUploadPhotoStep()
             case .confirmation:
                 RegistrationConfirmStep()
-            default:
-                EmptyView()
             }
             VStack {
                 Spacer()
@@ -39,13 +37,13 @@ struct InitialRegisterView: View {
         }
         .environmentObject(viewModel)
         .alert(viewModel.state.alert.title, isPresented: $viewModel.state.alert.isPresented, actions: {
-            ForEach(viewModel.state.alert.actions, id: \.self) { action in
+            ForEach(viewModel.state.alert.actions, id: \.self) { _ in
                 Text("Action")
             }
         }, message: {
             Text(viewModel.state.alert.message)
         })
-        .onChange(of: viewModel.state.registerState) { oldValue, newValue in
+        .onChange(of: viewModel.state.registerState) { _, newValue in
             if newValue == .success {
                 settings.refreshAccount()
             }

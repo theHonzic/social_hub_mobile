@@ -7,7 +7,7 @@ import org.koin.core.component.inject
 open class LoginViewModel: BaseViewModel<LoginContract.Event, LoginContract.State>() {
     private val loginUseCase: LoginUseCase by inject()
     override fun createInitialState(): LoginContract.State =
-        LoginContract.State(LoginContract.LoginState.INITIAL)
+        LoginContract.State(LoginContract.ILoginState.INITIAL)
 
     override suspend fun handleEvent(event: LoginContract.Event) {
         when (event) {
@@ -16,14 +16,14 @@ open class LoginViewModel: BaseViewModel<LoginContract.Event, LoginContract.Stat
     }
 
     private suspend fun login(login: String, password: String) {
-        setState { copy(state = LoginContract.LoginState.LOADING) }
+        setState { copy(state = LoginContract.ILoginState.LOADING) }
 
         loginUseCase.invoke(login, password)
             .onSuccess {
-                setState { copy(state = LoginContract.LoginState.SUCCESS) }
+                setState { copy(state = LoginContract.ILoginState.SUCCESS) }
             }
             .onFailure {
-                setState { copy(state = LoginContract.LoginState.ERROR) }
+                setState { copy(state = LoginContract.ILoginState.ERROR(it)) }
             }
     }
 
