@@ -1,7 +1,7 @@
 package persistance
 
 import com.liftric.kvault.KVault
-import cz.janjanovec.socialhubkmp.model.Account
+import cz.janjanovec.socialhubkmp.model.account.Account
 import cz.janjanovec.socialhubkmp.model.selectable.delegates.CountryHelper
 import cz.janjanovec.socialhubkmp.model.selectable.delegates.Gender
 import cz.janjanovec.socialhubkmp.utils.Logger
@@ -31,11 +31,11 @@ class KVaultImpl(
                 store.set(key = "ACCOUNT_FIRST_NAME", stringValue = account.firstName) &&
                 store.set(key = "ACCOUNT_LAST_NAME", stringValue = account.lastName) &&
                 store.set(key = "ACCOUNT_EMAIL", stringValue = account.email) &&
-                store.set(key = "ACCOUNT_PHONE_NUMBER", stringValue = account.phoneNumber) &&
-                store.set(key = "ACCOUNT_COUNTRY", stringValue = account.country.isoCode) &&
                 store.set(key = "ACCOUNT_GENDER", intValue = account.gender.genderId) &&
+                account.phoneNumber?.let { store.set(key = "ACCOUNT_PHONE_NUMBER", stringValue = it) } ?: true &&
+                account.nationality?.let { store.set(key = "ACCOUNT_COUNTRY", stringValue = it.isoCode) } ?: true &&
                 account.profilePicture?.let { store.set(key = "ACCOUNT_PROFILE_PICTURE", stringValue = it) } ?: true
-                )
+            )
         } catch (e: Exception) {
             Logger.log("Could not save account to KVault: ${e.message}", Logger.MessageKind.ERROR)
             false

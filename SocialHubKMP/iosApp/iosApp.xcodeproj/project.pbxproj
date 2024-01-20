@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,11 @@
 		C362A34B2B100E3F006495D5 /* RegistrationIdentificationStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = C362A34A2B100E3F006495D5 /* RegistrationIdentificationStep.swift */; };
 		C362A34D2B1012F0006495D5 /* RegistrationPersonalStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = C362A34C2B1012F0006495D5 /* RegistrationPersonalStep.swift */; };
 		C36473CB2B213387002BC707 /* RegistrationConfirmStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36473CA2B213387002BC707 /* RegistrationConfirmStep.swift */; };
+		C36B46C22B5C5B7D00092C2A /* JJNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = C36B46C12B5C5B7D00092C2A /* JJNavigation */; };
+		C36B46C62B5C601500092C2A /* GlobalSheetCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36B46C52B5C601500092C2A /* GlobalSheetCoordinator.swift */; };
+		C36B46C82B5C60AB00092C2A /* AdditionalAccountDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36B46C72B5C60AB00092C2A /* AdditionalAccountDataView.swift */; };
+		C36B46CB2B5C65D800092C2A /* AdditionalAccountDataVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36B46CA2B5C65D800092C2A /* AdditionalAccountDataVM.swift */; };
+		C36B46CE2B5C6A8600092C2A /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36B46CD2B5C6A8600092C2A /* Transition.swift */; };
 		C372F7A82B1E7F8000CAD0D5 /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C372F7A72B1E7F8000CAD0D5 /* RegisterVM.swift */; };
 		C372F7AA2B1E83A300CAD0D5 /* TextInputWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C372F7A92B1E83A300CAD0D5 /* TextInputWrapper.swift */; };
 		C37E2D842B2E3AB300C7A7CA /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37E2D832B2E3AB300C7A7CA /* OnboardingView.swift */; };
@@ -62,6 +67,10 @@
 		C362A34A2B100E3F006495D5 /* RegistrationIdentificationStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationIdentificationStep.swift; sourceTree = "<group>"; };
 		C362A34C2B1012F0006495D5 /* RegistrationPersonalStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPersonalStep.swift; sourceTree = "<group>"; };
 		C36473CA2B213387002BC707 /* RegistrationConfirmStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationConfirmStep.swift; sourceTree = "<group>"; };
+		C36B46C52B5C601500092C2A /* GlobalSheetCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSheetCoordinator.swift; sourceTree = "<group>"; };
+		C36B46C72B5C60AB00092C2A /* AdditionalAccountDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalAccountDataView.swift; sourceTree = "<group>"; };
+		C36B46CA2B5C65D800092C2A /* AdditionalAccountDataVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalAccountDataVM.swift; sourceTree = "<group>"; };
+		C36B46CD2B5C6A8600092C2A /* Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		C372F7A72B1E7F8000CAD0D5 /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
 		C372F7A92B1E83A300CAD0D5 /* TextInputWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputWrapper.swift; sourceTree = "<group>"; };
 		C37E2D832B2E3AB300C7A7CA /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -80,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C36B46C22B5C5B7D00092C2A /* JJNavigation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +124,8 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				C36B46CC2B5C6A7800092C2A /* Appearance */,
+				C36B46C32B5C5FF800092C2A /* Navigation */,
 				C32749CB2B0EBBEC00C89E6C /* View */,
 				C3B5E6882B00EF380083BE69 /* View model */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
@@ -207,6 +219,38 @@
 			path = "Register steps";
 			sourceTree = "<group>";
 		};
+		C36B46C32B5C5FF800092C2A /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				C36B46C42B5C600000092C2A /* Sheet coordinators */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		C36B46C42B5C600000092C2A /* Sheet coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				C36B46C52B5C601500092C2A /* GlobalSheetCoordinator.swift */,
+			);
+			path = "Sheet coordinators";
+			sourceTree = "<group>";
+		};
+		C36B46C92B5C65C300092C2A /* Additional account setup */ = {
+			isa = PBXGroup;
+			children = (
+				C36B46C72B5C60AB00092C2A /* AdditionalAccountDataView.swift */,
+			);
+			path = "Additional account setup";
+			sourceTree = "<group>";
+		};
+		C36B46CC2B5C6A7800092C2A /* Appearance */ = {
+			isa = PBXGroup;
+			children = (
+				C36B46CD2B5C6A8600092C2A /* Transition.swift */,
+			);
+			path = Appearance;
+			sourceTree = "<group>";
+		};
 		C37E2D822B2E3A2B00C7A7CA /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +263,7 @@
 		C3B5E6882B00EF380083BE69 /* View model */ = {
 			isa = PBXGroup;
 			children = (
+				C36B46CA2B5C65D800092C2A /* AdditionalAccountDataVM.swift */,
 				C3B5E6892B00EF450083BE69 /* LoginVM.swift */,
 				C35D2E262B01647400AB02C2 /* GlobalSettingsVM.swift */,
 				C372F7A72B1E7F8000CAD0D5 /* RegisterVM.swift */,
@@ -230,6 +275,7 @@
 		C3B5E68C2B00F0E50083BE69 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				C36B46C92B5C65C300092C2A /* Additional account setup */,
 				C37E2D822B2E3A2B00C7A7CA /* Onboarding */,
 				C32749C82B0EBB5200C89E6C /* Initial auth */,
 				C3DABE9A2B0125160060E48B /* AppLoadingView.swift */,
@@ -265,6 +311,9 @@
 			dependencies = (
 			);
 			name = iosApp;
+			packageProductDependencies = (
+				C36B46C12B5C5B7D00092C2A /* JJNavigation */,
+			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* iosApp.app */;
 			productType = "com.apple.product-type.application";
@@ -293,6 +342,9 @@
 				Base,
 			);
 			mainGroup = 7555FF72242A565900829871;
+			packageReferences = (
+				C36B46C02B5C5B7D00092C2A /* XCRemoteSwiftPackageReference "ios_navigation_library" */,
+			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -362,19 +414,23 @@
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				C3B5E68E2B00F0EE0083BE69 /* InitialAuthView.swift in Sources */,
 				C37E2D862B2E422D00C7A7CA /* OnboardingPage.swift in Sources */,
+				C36B46CE2B5C6A8600092C2A /* Transition.swift in Sources */,
 				C372F7AA2B1E83A300CAD0D5 /* TextInputWrapper.swift in Sources */,
 				C362A34B2B100E3F006495D5 /* RegistrationIdentificationStep.swift in Sources */,
 				C3D709A22B16A93400676B20 /* RegistrationUploadPhotoStep.swift in Sources */,
 				C32749D12B0EC1AE00C89E6C /* InitialRegisterView.swift in Sources */,
 				C32749CF2B0EBC5600C89E6C /* RoundedButton.swift in Sources */,
+				C36B46C62B5C601500092C2A /* GlobalSheetCoordinator.swift in Sources */,
 				C36473CB2B213387002BC707 /* RegistrationConfirmStep.swift in Sources */,
 				C3B5E68A2B00EF450083BE69 /* LoginVM.swift in Sources */,
+				C36B46C82B5C60AB00092C2A /* AdditionalAccountDataView.swift in Sources */,
 				C35D2E272B01647400AB02C2 /* GlobalSettingsVM.swift in Sources */,
 				C37E2D842B2E3AB300C7A7CA /* OnboardingView.swift in Sources */,
 				C309517E2B0F8972003307EF /* SingleLineTextField.swift in Sources */,
 				C30E63FB2B153B8E00456CCF /* SelectInputFIeld.swift in Sources */,
 				C372F7A82B1E7F8000CAD0D5 /* RegisterVM.swift in Sources */,
 				C3DABE9B2B0125160060E48B /* AppLoadingView.swift in Sources */,
+				C36B46CB2B5C65D800092C2A /* AdditionalAccountDataVM.swift in Sources */,
 				C3D709A02B16A44800676B20 /* PhotoPickerView.swift in Sources */,
 				C32749CA2B0EBB6F00C89E6C /* InitialLoginView.swift in Sources */,
 				C37E2D882B2E471600C7A7CA /* OnboardingVM.swift in Sources */,
@@ -584,6 +640,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C36B46C02B5C5B7D00092C2A /* XCRemoteSwiftPackageReference "ios_navigation_library" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/theHonzic/ios_navigation_library";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C36B46C12B5C5B7D00092C2A /* JJNavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C36B46C02B5C5B7D00092C2A /* XCRemoteSwiftPackageReference "ios_navigation_library" */;
+			productName = JJNavigation;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7555FF73242A565900829871 /* Project object */;
 }

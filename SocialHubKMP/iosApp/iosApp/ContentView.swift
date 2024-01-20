@@ -1,8 +1,11 @@
+import JJNavigation
 import SwiftUI
 import shared
 
 struct ContentView: View {
     @StateObject private var globalSettings: GlobalSettingsVM = .init()
+    @StateObject private var globalSheetCoordinator: SheetCoordinator<GlobalSheetCoordinator> = .init()
+    
     var body: some View {
         Group {
             switch globalSettings.state.appState {
@@ -19,6 +22,14 @@ struct ContentView: View {
             }
         }
         .environmentObject(globalSettings)
+        .sheetCoordinating(coordinator: globalSheetCoordinator)
+        .onChange(of: globalSettings.currentState) { _, newValue in
+            if let state = newValue.appState as? GlobalSettingsContractApplicationStateLoggedIn {
+                if !state.additionalAccountData.isEmpty {
+                    globalSheetCoordinator.presentSheet(.additionalAccountInfo(data: state.additionalAccountData))
+                }
+            }
+        }
     }
 }
 

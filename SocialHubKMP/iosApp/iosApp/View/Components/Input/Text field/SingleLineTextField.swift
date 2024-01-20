@@ -19,7 +19,7 @@ struct SingleLineTextField<BackgroundStyle: ShapeStyle, ForegroundStyle: ShapeSt
     var body: some View {
         HStack(alignment: .center, spacing: 8) {
             if let image = icon, !focus {
-                icon
+                image
                     .foregroundStyle(foreground)
                     .scaledToFit()
             }

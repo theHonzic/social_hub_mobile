@@ -1,6 +1,6 @@
 package persistance
 
-import cz.janjanovec.socialhubkmp.model.Account
+import cz.janjanovec.socialhubkmp.model.account.Account
 
 interface IKVault {
     fun clearAll()

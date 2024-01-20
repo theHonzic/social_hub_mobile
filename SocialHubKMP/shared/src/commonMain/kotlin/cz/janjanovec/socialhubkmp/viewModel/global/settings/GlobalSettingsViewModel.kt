@@ -1,5 +1,6 @@
 package cz.janjanovec.socialhubkmp.viewModel.global.settings
 
+import cz.janjanovec.socialhubkmp.model.account.Account
 import cz.janjanovec.socialhubkmp.useCases.account.GetMyAccountUseCase
 import cz.janjanovec.socialhubkmp.useCases.location.GetUserLocationUseCase
 import cz.janjanovec.socialhubkmp.utils.Logger
@@ -28,19 +29,26 @@ open class GlobalSettingsViewModel: BaseViewModel<GlobalSettingsContract.Event, 
         }
     }
 
+    val account: Account?
+        get() = when (val state = currentState.appState) {
+            is GlobalSettingsContract.ApplicationState.LoggedIn -> state.account
+            else -> null
+        }
+
     init {
         launch {
             localStore.isAppNewlyInstalled().let {
                 if (it) {
                     kVaultStore.clearAll()
-                    setState { copy(appState = GlobalSettingsContract.ApplicationState.Onboarding()) }
+                    setState { copy(appState = GlobalSettingsContract.ApplicationState.Onboarding) }
                 } else {
                     getMyAccountUseCase.invoke().collect { accountResult ->
                         accountResult.onSuccess { account ->
                             setState {
                                 copy(
                                     appState = GlobalSettingsContract.ApplicationState.LoggedIn(
-                                        account
+                                        account,
+                                        account.additionalAccountDataRequired
                                     )
                                 )
                             }
@@ -70,7 +78,7 @@ open class GlobalSettingsViewModel: BaseViewModel<GlobalSettingsContract.Event, 
         launch {
             getMyAccountUseCase.invoke().collect { accountResult ->
                 accountResult.onSuccess { account ->
-                    setState { copy(appState = GlobalSettingsContract.ApplicationState.LoggedIn(account)) }
+                    setState { copy(appState = GlobalSettingsContract.ApplicationState.LoggedIn(account, account.additionalAccountDataRequired)) }
                 }
                 accountResult.onFailure {
                     setState { copy(appState = GlobalSettingsContract.ApplicationState.LoggedOut) }
@@ -85,7 +93,7 @@ open class GlobalSettingsViewModel: BaseViewModel<GlobalSettingsContract.Event, 
         launch {
             getMyAccountUseCase.invoke().collect { accountResult ->
                 accountResult.onSuccess { account ->
-                    setState { copy(appState = GlobalSettingsContract.ApplicationState.LoggedIn(account)) }
+                    setState { copy(appState = GlobalSettingsContract.ApplicationState.LoggedIn(account, account.additionalAccountDataRequired)) }
                 }
                 accountResult.onFailure {
                     setState { copy(appState = GlobalSettingsContract.ApplicationState.LoggedOut) }

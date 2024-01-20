@@ -1,8 +1,7 @@
 package cz.janjanovec.socialhubkmp.viewModel.global.settings
 
-import cz.janjanovec.socialhubkmp.model.Account
-import cz.janjanovec.socialhubkmp.utils.Logger
-import cz.janjanovec.socialhubkmp.viewModel.BasicUiState
+import cz.janjanovec.socialhubkmp.model.account.Account
+import cz.janjanovec.socialhubkmp.utils.AdditionalAccountData
 import cz.janjanovec.socialhubkmp.viewModel.UiEvent
 import cz.janjanovec.socialhubkmp.viewModel.UiState
 
@@ -16,9 +15,12 @@ interface GlobalSettingsContract {
     }
 
     sealed interface ApplicationState {
-        data class LoggedIn(val account: Account): ApplicationState
+        data class LoggedIn(
+            val account: Account,
+            val additionalAccountData: List<AdditionalAccountData>
+        ): ApplicationState
         object LoggedOut: ApplicationState
-        data class Onboarding(var onboardingStep: Int = 0): ApplicationState
+        data object Onboarding: ApplicationState
         object Loading: ApplicationState
     }
 }

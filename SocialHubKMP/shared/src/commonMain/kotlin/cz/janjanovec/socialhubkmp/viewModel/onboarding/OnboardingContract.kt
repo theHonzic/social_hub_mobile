@@ -1,6 +1,5 @@
 package cz.janjanovec.socialhubkmp.viewModel.onboarding
 
-import cz.janjanovec.socialhubkmp.model.Account
 import cz.janjanovec.socialhubkmp.viewModel.UiEvent
 import cz.janjanovec.socialhubkmp.viewModel.UiState
 

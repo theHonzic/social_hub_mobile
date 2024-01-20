@@ -1,7 +1,7 @@
 package cz.janjanovec.socialhubkmp.useCases.account
 
 import cz.janjanovec.socialhubkmp.api.IHttpClient
-import cz.janjanovec.socialhubkmp.model.Account
+import cz.janjanovec.socialhubkmp.model.account.Account
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import persistance.IKVault

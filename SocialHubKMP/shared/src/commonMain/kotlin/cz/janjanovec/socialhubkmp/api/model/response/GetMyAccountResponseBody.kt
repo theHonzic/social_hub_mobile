@@ -1,7 +1,6 @@
 package cz.janjanovec.socialhubkmp.api.model.response
 
-import cz.janjanovec.socialhubkmp.model.Account
-import cz.janjanovec.socialhubkmp.model.selectable.delegates.Country
+import cz.janjanovec.socialhubkmp.model.account.Account
 import cz.janjanovec.socialhubkmp.model.selectable.delegates.CountryHelper
 import cz.janjanovec.socialhubkmp.model.selectable.delegates.Gender
 import kotlinx.serialization.Serializable

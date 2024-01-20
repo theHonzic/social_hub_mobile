@@ -3,7 +3,7 @@ package cz.janjanovec.socialhubkmp.api
 import cz.janjanovec.socialhubkmp.api.model.request.auth.CheckAccountAvailabilityRequestBody
 import cz.janjanovec.socialhubkmp.api.model.request.auth.LoginRequestBody
 import cz.janjanovec.socialhubkmp.api.model.request.auth.RegistrationRequestBody
-import cz.janjanovec.socialhubkmp.model.Account
+import cz.janjanovec.socialhubkmp.model.account.Account
 
 interface IHttpClient {
     // Auth

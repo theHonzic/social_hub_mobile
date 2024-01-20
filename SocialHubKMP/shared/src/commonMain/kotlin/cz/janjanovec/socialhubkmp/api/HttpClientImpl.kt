@@ -8,7 +8,7 @@ import cz.janjanovec.socialhubkmp.api.model.response.GetMyAccountResponseBody
 import cz.janjanovec.socialhubkmp.api.model.response.LoginResponseBody
 import cz.janjanovec.socialhubkmp.api.model.response.RegistrationResponseBody
 import cz.janjanovec.socialhubkmp.api.model.response.toAccount
-import cz.janjanovec.socialhubkmp.model.Account
+import cz.janjanovec.socialhubkmp.model.account.Account
 import cz.janjanovec.socialhubkmp.utils.Logger
 import persistance.KVaultImpl
 import io.ktor.client.HttpClient
