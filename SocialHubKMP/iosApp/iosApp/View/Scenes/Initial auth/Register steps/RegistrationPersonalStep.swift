@@ -69,7 +69,7 @@ struct RegistrationPersonalStep: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text("Country*")
                     .foregroundStyle(Color.white)
-                // SelectInputFIeld(selectedItem: .constant(CountryHelper().getAll().first!), list: CountryHelper().getAll())
+                SelectInputFIeld(selectedItem: .constant(CountryHelper().getAll().first!), list: CountryHelper().getAll())
             }
             Spacer()
         }

@@ -12,13 +12,13 @@ interface LoginContract {
     }
 
     data class State(
-        var state: ILoginState
+        var state: LoginState
     ) : UiState
 
-    sealed interface ILoginState {
-        object INITIAL : ILoginState
-        object LOADING : ILoginState
-        object SUCCESS : ILoginState
-        data class ERROR(val error: Throwable) : ILoginState
+    enum class LoginState {
+        INITIAL,
+        SUCCESS,
+        ERROR,
+        LOADING,
     }
 }

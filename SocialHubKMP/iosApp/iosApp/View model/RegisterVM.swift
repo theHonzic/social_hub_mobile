@@ -26,6 +26,9 @@ final class RegisterVM: RegisterViewModel, ObservableObject {
     
     override init() {
         super.init()
+        collect(flow: self.uiState, collect: { state in
+            self.state = state as! RegisterContractState // swiftlint:disable:this force_cast
+        })
     }
 }
 
