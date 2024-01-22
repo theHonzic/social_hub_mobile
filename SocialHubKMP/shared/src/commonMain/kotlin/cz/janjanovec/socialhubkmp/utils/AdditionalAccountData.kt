@@ -6,5 +6,5 @@ enum class AdditionalAccountData(
     PHONE_NUMBER(true),
     NATIONALITY(false),
     BUSINESS(false),
-    PROFILE_PICTURE(true)
+    PROFILE_PICTURE(true);
 }

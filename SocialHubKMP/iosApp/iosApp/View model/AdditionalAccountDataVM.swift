@@ -10,7 +10,7 @@ import shared
 import SwiftUI
 
 final class AdditionalAccountDataVM: AdditionalAccountDataViewModel, ObservableObject {
-    @Published var state: AdditionalAccountDataContractState = .init(stack: [])
+    @Published var state: AdditionalAccountDataContractState = .init(stack: [], currentStep: nil)
     
     override init(additionalAccountData: [AdditionalAccountData]) {
         super.init(additionalAccountData: additionalAccountData)
@@ -18,5 +18,11 @@ final class AdditionalAccountDataVM: AdditionalAccountDataViewModel, ObservableO
         collect(flow: self.uiState, collect: { state in
             self.state = state as! AdditionalAccountDataContractState // swiftlint:disable:this force_cast
         })
+    }
+}
+
+extension AdditionalAccountDataVM {
+    func nextStep() {
+        self.setEvent(event: AdditionalAccountDataContractEventNextStep())
     }
 }

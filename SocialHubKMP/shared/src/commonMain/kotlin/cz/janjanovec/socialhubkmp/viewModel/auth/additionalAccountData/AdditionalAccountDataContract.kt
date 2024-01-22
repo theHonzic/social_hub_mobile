@@ -6,7 +6,8 @@ import cz.janjanovec.socialhubkmp.viewModel.UiState
 
 interface AdditionalAccountDataContract {
     data class State(
-        val stack: MutableList<AdditionalAccountData>
+        val stack: MutableList<AdditionalAccountData>,
+        val currentStep: AdditionalAccountData?
     ): UiState
     sealed interface Event: UiEvent {
         object NextStep: Event

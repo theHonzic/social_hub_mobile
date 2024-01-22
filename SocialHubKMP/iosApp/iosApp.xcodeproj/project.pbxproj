@@ -25,6 +25,7 @@
 		C36B46C82B5C60AB00092C2A /* AdditionalAccountDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36B46C72B5C60AB00092C2A /* AdditionalAccountDataView.swift */; };
 		C36B46CB2B5C65D800092C2A /* AdditionalAccountDataVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36B46CA2B5C65D800092C2A /* AdditionalAccountDataVM.swift */; };
 		C36B46CE2B5C6A8600092C2A /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36B46CD2B5C6A8600092C2A /* Transition.swift */; };
+		C36F198A2B5EA58D00C5B4A3 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36F19892B5EA58C00C5B4A3 /* AlertController.swift */; };
 		C372F7A82B1E7F8000CAD0D5 /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C372F7A72B1E7F8000CAD0D5 /* RegisterVM.swift */; };
 		C372F7AA2B1E83A300CAD0D5 /* TextInputWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C372F7A92B1E83A300CAD0D5 /* TextInputWrapper.swift */; };
 		C37E2D842B2E3AB300C7A7CA /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37E2D832B2E3AB300C7A7CA /* OnboardingView.swift */; };
@@ -71,6 +72,7 @@
 		C36B46C72B5C60AB00092C2A /* AdditionalAccountDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalAccountDataView.swift; sourceTree = "<group>"; };
 		C36B46CA2B5C65D800092C2A /* AdditionalAccountDataVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalAccountDataVM.swift; sourceTree = "<group>"; };
 		C36B46CD2B5C6A8600092C2A /* Transition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
+		C36F19892B5EA58C00C5B4A3 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		C372F7A72B1E7F8000CAD0D5 /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
 		C372F7A92B1E83A300CAD0D5 /* TextInputWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputWrapper.swift; sourceTree = "<group>"; };
 		C37E2D832B2E3AB300C7A7CA /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				C36F19882B5EA58000C5B4A3 /* Utils */,
 				C36B46CC2B5C6A7800092C2A /* Appearance */,
 				C36B46C32B5C5FF800092C2A /* Navigation */,
 				C32749CB2B0EBBEC00C89E6C /* View */,
@@ -249,6 +252,14 @@
 				C36B46CD2B5C6A8600092C2A /* Transition.swift */,
 			);
 			path = Appearance;
+			sourceTree = "<group>";
+		};
+		C36F19882B5EA58000C5B4A3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C36F19892B5EA58C00C5B4A3 /* AlertController.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		C37E2D822B2E3A2B00C7A7CA /* Onboarding */ = {
@@ -427,6 +438,7 @@
 				C35D2E272B01647400AB02C2 /* GlobalSettingsVM.swift in Sources */,
 				C37E2D842B2E3AB300C7A7CA /* OnboardingView.swift in Sources */,
 				C309517E2B0F8972003307EF /* SingleLineTextField.swift in Sources */,
+				C36F198A2B5EA58D00C5B4A3 /* AlertController.swift in Sources */,
 				C30E63FB2B153B8E00456CCF /* SelectInputFIeld.swift in Sources */,
 				C372F7A82B1E7F8000CAD0D5 /* RegisterVM.swift in Sources */,
 				C3DABE9B2B0125160060E48B /* AppLoadingView.swift in Sources */,

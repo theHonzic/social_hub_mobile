@@ -8,20 +8,19 @@ open class AdditionalAccountDataViewModel(
 ): BaseViewModel<AdditionalAccountDataContract.Event, AdditionalAccountDataContract.State>() {
     override fun createInitialState(): AdditionalAccountDataContract.State {
         return AdditionalAccountDataContract.State(
-            emptyList<AdditionalAccountData>().toMutableList()
+            emptyList<AdditionalAccountData>().toMutableList(),
+            null
         )
     }
 
     init {
         setState {
             copy(
-                additionalAccountData.toMutableList()
+                additionalAccountData.toMutableList(),
+                additionalAccountData.lastOrNull()
             )
         }
     }
-
-    val currentStep: AdditionalAccountData?
-        get() = additionalAccountData.lastOrNull()
 
     override suspend fun handleEvent(event: AdditionalAccountDataContract.Event) {
         when (event)  {
@@ -31,9 +30,11 @@ open class AdditionalAccountDataViewModel(
 
     private suspend fun nextStep() {
         if (additionalAccountData.isNotEmpty()) {
+            val newData = additionalAccountData.dropLast(1).toMutableList()
             setState {
                 copy(
-                    additionalAccountData.dropLast(1).toMutableList()
+                    stack = newData,
+                    currentStep = newData.lastOrNull()
                 )
             }
         }
